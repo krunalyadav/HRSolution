@@ -1,0 +1,79 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            int[][] numbers = new int[3][];
+            for (int s_i = 0; s_i < 3; s_i++)
+            {
+                string[] s_temp = Console.ReadLine().Split(' ');
+                numbers[s_i] = Array.ConvertAll(s_temp, Int32.Parse);
+            }
+            int[,] frame1 = new int[3, 3]
+    {{4, 9, 2},
+     {3, 5, 7},
+     {8, 1, 6}};
+
+            int[,] frame11 = new int[3, 3]
+            {{8, 1, 6},
+     {3, 5, 7},
+     {4, 9, 2}};
+
+            int[,] frame2 = new int[3, 3]
+            {{8, 3, 4},
+     {1, 5, 9},
+     {6, 7, 2}};
+
+            int[,] frame12 = new int[3, 3]
+            {{4, 3, 8},
+     {9, 5, 1},
+     {2, 7, 6}};
+
+            int[,] frame3 = new int[3, 3]
+            {{6, 1, 8},
+     {7, 5, 3},
+     {2, 9, 4}};
+
+            int[,] frame13 = new int[3, 3]
+            {{2, 9, 4},
+     {7, 5, 3},
+     {6, 1, 8}};
+
+            int[,] frame4 = new int[3, 3]
+            {{2, 7, 6},
+     {9, 5, 1},
+     {4, 3, 8}};
+
+            int[,] frame14 = new int[3, 3]
+            {{6, 7, 2},
+     {1, 5, 9},
+     {8, 3, 4}};
+
+            int cost1 = diff(numbers, frame1);
+            int cost2 = diff(numbers, frame2);
+            int cost3 = diff(numbers, frame3);
+            int cost4 = diff(numbers, frame4);
+
+            int cost11 = diff(numbers, frame11);
+            int cost12 = diff(numbers, frame12);
+            int cost13 = diff(numbers, frame13);
+            int cost14 = diff(numbers, frame14);
+
+            int min = Math.Min(cost1, Math.Min(cost2, Math.Min(cost3, cost4)));
+            int min1 = Math.Min(cost11, Math.Min(cost12, Math.Min(cost13, cost14)));
+            Console.WriteLine(Math.Min(min, min1));
+            Console.Read();
+        }
+
+        private static int diff(int[][] numbers, int[,] frame)
+        {
+            int cost = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cost += Math.Abs(numbers[i][j] - frame[i, j]);
+                }
+            }
+            return cost;
+        }
+    }
