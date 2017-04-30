@@ -1,0 +1,25 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] tokens_n = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(tokens_n[0]);
+            int k = Convert.ToInt32(tokens_n[1]);
+            string[] height_temp = Console.ReadLine().Split(' ');
+            int[] height = Array.ConvertAll(height_temp, Int32.Parse);
+            int max = 0;
+            height.ToList().ForEach(x =>
+            {
+                if (x > max) max = x;
+            });
+            if (max > k)
+            {
+                Console.WriteLine(max - k);
+            }
+            else
+            {
+                Console.WriteLine(0);
+            }
+            Console.Read();
+        }
+    }
