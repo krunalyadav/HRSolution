@@ -1,0 +1,38 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int q = Convert.ToInt32(Console.ReadLine());
+            for (int a0 = 0; a0 < q; a0++)
+            {
+                string[] tokens_x = Console.ReadLine().Split(' ');
+                int x = Convert.ToInt32(tokens_x[0]);
+                int y = Convert.ToInt32(tokens_x[1]);
+                int z = Convert.ToInt32(tokens_x[2]);
+
+                while (true)
+                {
+                    if (x > z) x--;
+                    else x++;
+                    if (y > z) y--;
+                    else y++;
+                    if (x == y && y == z)
+                    {
+                        Console.WriteLine("Mouse C");
+                        break;
+                    }
+                    else if (x == z)
+                    {
+                        Console.WriteLine("Cat A");
+                        break;
+                    }
+                    else if (y == z)
+                    {
+                        Console.WriteLine("Cat B");
+                        break;
+                    }
+                }
+            }
+            Console.Read();
+        }
+    }
