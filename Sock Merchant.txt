@@ -1,0 +1,24 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] c_temp = Console.ReadLine().Split(' ');
+            int[] c = Array.ConvertAll(c_temp, Int32.Parse);
+            int[] ary = new int[101];
+            for (int i = 0; i < c.Length; i++)
+            {
+                ary[c[i]]++;
+            }
+            int sum = 0;
+            for (int i = 1; i < 101; i++)
+            {
+                if (ary[i] >= 2)
+                {
+                    sum += (ary[i] / 2);
+                }
+            }
+            Console.WriteLine(sum);
+            Console.Read();
+        }
+    }
