@@ -1,0 +1,20 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int count = 0;
+
+            if (s.Length > 0) { count++; }
+            s.ToList().ForEach(x =>
+            {
+                if (x >= 65 && x <= 90)
+                {
+                    count++;
+                }
+            });
+            Console.WriteLine(count);
+
+            Console.Read();
+        }
+    }
