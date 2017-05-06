@@ -1,1 +1,1 @@
-# HRSolution
+# Solution for Hacker Rank problems.
