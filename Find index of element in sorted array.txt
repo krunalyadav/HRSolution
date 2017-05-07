@@ -1,0 +1,28 @@
+class Program
+    {
+        static void Main(String[] args)
+        {
+            int v = Convert.ToInt32(Console.ReadLine());
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] ary = Array.ConvertAll(temp, Int32.Parse);
+            Console.WriteLine(BinarySearch(ary, 0, ary.Length - 1, v));
+            Console.Read();
+        }
+
+        static int BinarySearch(int[] ary, int start, int end, int value)
+        {
+            if (start > end) return -1;
+
+            int mid = (start + end) / 2;
+            if (ary[mid] == value) return mid;
+            else if (value < ary[mid])
+            {
+                return BinarySearch(ary, start, mid - 1, value);
+            }
+            else
+            {
+                return BinarySearch(ary, mid + 1, end, value);
+            }
+        }
+    }
