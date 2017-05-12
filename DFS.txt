@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int m = Convert.ToInt32(temp[1]);
+            Graph grapth = new Graph(n);
+            for (int i = 0; i < m; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                grapth.AddEdge(Tuple.Create(Convert.ToInt32(temp[0]), Convert.ToInt32(temp[1])));
+            }
+            var algorithm = new Algorithms();
+            int start = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(string.Join(", ", algorithm.DFS(grapth, start)));
+            Console.Read();
+        }
+    }
+
+    public class Graph
+    {
+        int vertexCount;
+        public Graph(int count)
+        {
+            vertexCount = count;
+
+            for (int i = 1; i <= vertexCount; i++)
+            {
+                AdjacencyList[i] = new HashSet<int>();
+            }
+        }
+
+        public Dictionary<int, HashSet<int>> AdjacencyList { get; } = new Dictionary<int, HashSet<int>>();
+
+        public void AddEdge(Tuple<int, int> edge)
+        {
+            if (AdjacencyList.ContainsKey(edge.Item1) && AdjacencyList.ContainsKey(edge.Item2))
+            {
+                AdjacencyList[edge.Item1].Add(edge.Item2);
+                AdjacencyList[edge.Item2].Add(edge.Item1);
+            }
+        }
+    }
+
+    public class Algorithms
+    {
+        public HashSet<int> DFS(Graph graph, int start)
+        {
+            var visited = new HashSet<int>();
+
+            if (!graph.AdjacencyList.ContainsKey(start))
+                return visited;
+
+            var stack = new Stack<int>();
+            stack.Push(start);
+
+            while (stack.Count > 0)
+            {
+                var vertex = stack.Pop();
+
+                if (visited.Contains(vertex))
+                    continue;
+
+                visited.Add(vertex);
+
+                foreach (var neighbor in graph.AdjacencyList[vertex])
+                    if (!visited.Contains(neighbor))
+                        stack.Push(neighbor);
+            }
+
+            return visited;
+        }
+    }
+}
+
+
+//http://www.koderdojo.com/blog/depth-first-search-algorithm-in-csharp-and-net-core
