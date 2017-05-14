@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            int q = Convert.ToInt32(Console.ReadLine());
+            for (int j = 0; j < q; j++)
+            {
+                string s = Console.ReadLine().ToLower();
+                string temp = "hackerrank";
+                int i = 0, k = 0;
+                while (i < s.Length && k != 10)
+                {
+                    if (s[i] == temp[k])
+                    {
+                        k++;
+                    }
+                    i++;
+                }
+                if (k == 10)
+                {
+                    Console.WriteLine("YES");
+                }
+                else
+                {
+                    Console.WriteLine("NO");
+                }
+            }
+
+            Console.Read();
+        }
+    }
+}
