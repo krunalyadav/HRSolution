@@ -1,0 +1,34 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int l = s.Length;
+            long n = Convert.ToInt64(Console.ReadLine());
+            int aCount = 0;
+            for (int i = 0; i < l; i++)
+            {
+                if (s[i] == 'a') aCount++;
+            }
+            long divident = n / l;
+            long remainder = n % l;
+
+            long total = divident * aCount;
+            if (remainder > 0)
+            {
+                aCount = 0;
+                for (int i = 0; i < remainder; i++)
+                {
+                    if (s[i] == 'a') aCount++;
+                }
+                total += aCount;
+            }
+            Console.WriteLine(total);
+            Console.Read();
+        }
+    }
+}
