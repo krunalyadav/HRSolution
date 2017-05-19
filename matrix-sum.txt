@@ -1,0 +1,47 @@
+//https://www.hackerearth.com/practice/algorithms/dynamic-programming/2-dimensional/tutorial/
+
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            int i, j;
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int m = Convert.ToInt32(temp[1]);
+
+            int[,] ary = new int[n, m];
+
+            for (i = 0; i < n; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                for (j = 0; j < m; j++)
+                {
+                    ary[i, j] = (j == 0 ? 0 : ary[i, j - 1]) + Convert.ToInt32(temp[j]);
+                }
+            }
+
+            int x, y, sum = 0, q;
+            q = Convert.ToInt32(Console.ReadLine());
+
+            for (i = 0; i < q; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                x = Convert.ToInt32(temp[0]);
+                y = Convert.ToInt32(temp[1]);
+                sum = 0;
+                for (j = 0; j < x; j++)
+                {
+                    sum += ary[j, y - 1];
+                }
+                Console.WriteLine(sum);
+            }
+
+            Console.Read();
+        }
+    }
+}
