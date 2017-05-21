@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            string[] minutes = {"one minute",
+                "two minutes",
+                "three minutes",
+                "four minutes",
+                "five minutes",
+                "six minutes",
+                "seven minutes",
+                "eight minutes",
+                "nine minutes",
+                "ten minutes",
+                "eleven minutes",
+                "twelve minutes",
+                "thirteen minutes",
+                "forteen minutes",
+                "quarter",
+                "sixteen minutes",
+                "seventeen minutes",
+                "eighteen minutes",
+                "nineteen minutes",
+                "twenty minutes",
+                "twenty one minutes",
+                "twenty two minutes",
+                "twenty three minutes",
+                "twenty four minutes",
+                "twenty five minutes",
+                "twenty six minutes",
+                "twenty seven minutes",
+                "twenty eight minutes",
+                "twenty nine minutes",
+                "half"};
+            string[] hours = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve" };
+
+            int h = Convert.ToInt32(Console.ReadLine());
+            int m = Convert.ToInt32(Console.ReadLine());
+
+            if (m == 0)
+                Console.WriteLine(hours[h - 1] + " o' clock");
+            else if (m <= 30)
+                Console.WriteLine(minutes[m - 1] + " past " + hours[h - 1]);
+            else
+                Console.WriteLine(minutes[60 - m - 1] + " to " + hours[h]);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/the-time-in-words?h_r=next-challenge&h_v=zen
