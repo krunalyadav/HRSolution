@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            int min = int.MaxValue;
+            for (int i = 0; i < n; i++)
+            {
+                if (dict.ContainsKey(Convert.ToInt32(temp[i])))
+                {
+                    min = (i - dict[Convert.ToInt32(temp[i])]) < min ? (i - dict[Convert.ToInt32(temp[i])]) : min;
+                }
+                dict[Convert.ToInt32(temp[i])] = i;
+            }
+            Console.WriteLine(min == int.MaxValue ? -1 : min);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/minimum-distances
