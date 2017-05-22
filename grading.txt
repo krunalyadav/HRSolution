@@ -1,0 +1,31 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            int grade, divident, roundedGrade;
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                grade = Convert.ToInt32(Console.ReadLine());
+                if (grade >= 38)
+                {
+                    divident = grade / 5;
+                    roundedGrade = divident * 5 + 5;
+                    if ((roundedGrade - grade) < 3)
+                    {
+                        Console.WriteLine(roundedGrade);
+                    }
+                    else Console.WriteLine(grade);
+                }
+                else Console.WriteLine(grade);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/grading
