@@ -1,0 +1,41 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            long a, b, c, count = 0, n, mincount;
+            string[] temp;
+            long[] ary = new long[10000];
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int z = 0; z < t; z++)
+            {
+                n = Convert.ToInt32(Console.ReadLine());
+                temp = Console.ReadLine().Split(' ');
+                ary = Array.ConvertAll(temp, long.Parse);
+                Array.Sort(ary);
+                mincount = int.MaxValue;
+                for (int j = 0; j <= 5; j++)
+                {
+                    count = 0;
+                    for (int i = 1; i < n; i++)
+                    {
+                        ary[i] -= ary[0];
+                        a = ary[i] / 5;
+                        b = (ary[i] % 5) / 2;
+                        c = ((ary[i] % 5) % 2) / 1;
+                        count = count + a + b + c;
+                    }
+                    if (count < mincount) mincount = count;
+                }
+                Console.WriteLine(count);
+            }
+
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/equal
