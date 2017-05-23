@@ -1,0 +1,43 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int x1 = Convert.ToInt32(temp[0]);
+            int v1 = Convert.ToInt32(temp[1]);
+            int x2 = Convert.ToInt32(temp[2]);
+            int v2 = Convert.ToInt32(temp[3]);
+            int less = x1 < x2 ? x1 : x2;
+            int more = x1 < x2 ? x2 : x1;
+            int l = v1 < v2 ? v1 : v2;
+            int m = v1 < v2 ? v2 : v1;
+            bool flag = false;
+            if ((x1 == less && v1 <= v2) || (x2 == less && v2 <= v1))
+            {
+                Console.WriteLine("NO");
+            }
+            else
+            {
+                while (less <= more)
+                {
+                    if (less == more)
+                    {
+                        flag = true;
+                        break;
+                    }
+                    less += m;
+                    more += l;
+                }
+                if (flag) Console.WriteLine("YES");
+                else Console.WriteLine("NO");
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/kangaroo
