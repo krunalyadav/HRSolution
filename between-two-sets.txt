@@ -1,0 +1,48 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int m = Convert.ToInt32(temp[1]);
+            int[] a = new int[n];
+            int[] b = new int[m];
+            temp = Console.ReadLine().Split(' ');
+            a = Array.ConvertAll(temp, int.Parse);
+            temp = Console.ReadLine().Split(' ');
+            b = Array.ConvertAll(temp, int.Parse);
+            int x = a[n - 1];
+            bool flag = false;
+            int count = 0;
+            while (x <= b[0])
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (x % a[i] != 0)
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                for (int i = 0; !flag && i < m; i++)
+                {
+                    if (b[i] % x != 0)
+                    {
+                        flag = true;
+                    }
+                }
+                if (!flag) count++;
+                else flag = false;
+                if (a[n - 1] != 1) x += 2; else x++;
+            }
+            Console.WriteLine(count);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/between-two-sets?h_r=next-challenge&h_v=zen
