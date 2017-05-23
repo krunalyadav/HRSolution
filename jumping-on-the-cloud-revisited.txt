@@ -1,0 +1,26 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int k = Convert.ToInt32(temp[1]);
+            int[] c = new int[n];
+            temp = Console.ReadLine().Split(' ');
+            c = Array.ConvertAll(temp, int.Parse);
+            int e = 100;
+            for (int i = k; i <= n; i = i + k)
+            {
+                e = e - 1 - (c[i == n ? 0 : i] == 1 ? 2 : 0);
+            }
+            Console.WriteLine(e);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited
