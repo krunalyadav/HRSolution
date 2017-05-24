@@ -1,0 +1,26 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] ary = new int[n];
+            string[] temp = Console.ReadLine().Split(' ');
+            ary = Array.ConvertAll(temp, int.Parse);
+            Array.Sort(ary);
+            int min = int.MaxValue;
+            for (int i = 0; (i + 1) < n; i++)
+            {
+                if (Math.Abs(ary[i] - ary[i + 1]) < min)
+                    min = Math.Abs(ary[i] - ary[i + 1]);
+            }
+            Console.WriteLine(min);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/minimum-absolute-difference-in-an-array
