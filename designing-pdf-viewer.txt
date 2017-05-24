@@ -1,0 +1,24 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] ary = new int[25];
+            ary = Array.ConvertAll(temp, int.Parse);
+            string word = Console.ReadLine();
+            int maxValue = int.MinValue;
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (ary[word[i] - 97] > maxValue) maxValue = ary[word[i] - 97];
+            }
+            Console.WriteLine(maxValue * word.Length);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/designer-pdf-viewer
