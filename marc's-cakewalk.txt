@@ -1,0 +1,25 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] ary = new int[n];
+            string[] temp = Console.ReadLine().Split(' ');
+            ary = Array.ConvertAll(temp, int.Parse);
+            Array.Sort(ary, (a, b) => b.CompareTo(a));
+            long miles = 0;
+            for (int i = 0; i < n; i++)
+            {
+                miles = miles + (ary[i] * (long)Math.Pow(2, i));
+            }
+            Console.WriteLine(miles);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/marcs-cakewalk?h_r=next-challenge&h_v=zen
