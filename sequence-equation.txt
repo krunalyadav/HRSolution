@@ -1,0 +1,34 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] ary = new int[n + 1];
+            for (int i = 0; i < n; i++)
+            {
+                ary[i + 1] = Convert.ToInt32(temp[i]);
+            }
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine(ReturnLocationFromValue(ReturnLocationFromValue(i, ary), ary));
+            }
+            Console.Read();
+        }
+
+        static int ReturnLocationFromValue(int value, int[] ary)
+        {
+            for (int i = 1; i < ary.Length; i++)
+            {
+                if (ary[i] == value) return i;
+            }
+            return 0;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/permutation-equation
