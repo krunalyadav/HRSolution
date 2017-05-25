@@ -1,0 +1,21 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(String[] args)
+        {
+            long t, n = 2;
+            t = Convert.ToInt64(Console.ReadLine());
+            while (3 * (n - 1) < t)
+            {
+                n *= 2;
+            }
+            Console.WriteLine(3 * (n - 1) - t + 1);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/strange-code
