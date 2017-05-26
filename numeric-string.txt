@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string[] temp = Console.ReadLine().Split(' ');
+            int k = Convert.ToInt32(temp[0]);
+            int b = Convert.ToInt32(temp[1]);
+            int m = Convert.ToInt32(temp[2]);
+
+            var strList = new List<string>();
+            for (int i = 0; (i + k) <= s.Length; i++)
+            {
+                strList.Add(s.Substring(i, k));
+            }
+
+            BigInteger sum = 0;
+            strList.ForEach(x =>
+            {
+                sum += (strToNumber(x, b) % m);
+            });
+            Console.WriteLine(sum);
+            Console.Read();
+        }
+
+        static BigInteger strToNumber(string s, long b)
+        {
+            BigInteger number = 0;
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                number += (BigInteger)Math.Pow(b, s.Length - 1 - i) * (BigInteger)char.GetNumericValue(s[i]);
+            }
+            return number;
+        }
+    }
+}
+
+//https://www.hackerrank.com/contests/world-codesprint-11/challenges/numeric-string
