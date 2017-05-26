@@ -1,0 +1,33 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int m = Convert.ToInt32(temp[1]);
+            temp = Console.ReadLine().Split(' ');
+            int[] ary = new int[m];
+            ary = Array.ConvertAll(temp, int.Parse);
+            int max = 0;
+            Array.Sort(ary);
+            for (int i = 0; (i + 1) < m; i++)
+            {
+                if ((ary[i + 1] - ary[i]) > max) max = ary[i + 1] - ary[i];
+            }
+            if (max == 1) max = 0;
+            else
+                max = max - (max / 2);
+            if (ary[0] > max) max = ary[0];
+            if (((n - 1) - ary[m - 1]) > max) max = n - ary[m - 1] - 1;
+            if (max > 0) Console.WriteLine(max);
+            else Console.WriteLine(0);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/flatland-space-stations
