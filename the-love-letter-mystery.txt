@@ -1,0 +1,27 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            int count;
+            string s;
+            for (int i = 0; i < t; i++)
+            {
+                count = 0;
+                s = Console.ReadLine();
+                for (int j = 0; j < (s.Length / 2); j++)
+                {
+                    if (s[j] != s[s.Length - j - 1]) count += Math.Abs(s[j] - s[s.Length - j - 1]);
+                }
+                Console.WriteLine(count);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/the-love-letter-mystery?h_r=next-challenge&h_v=zen
