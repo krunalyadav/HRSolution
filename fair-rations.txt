@@ -1,0 +1,44 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] c = Array.ConvertAll(temp, int.Parse);
+            bool flag = false;
+            int count = 0;
+            for (int i = 0; (i + 1) < n; i++)
+            {
+                if (c[i] % 2 != 0)
+                {
+                    c[i]++;
+                    c[i + 1]++;
+                    count++;
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                if (c[i] % 2 != 0)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                Console.WriteLine("NO");
+            }
+            else
+            {
+                Console.WriteLine(2 * count);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/fair-rations?h_r=next-challenge&h_v=zen
