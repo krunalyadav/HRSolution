@@ -1,0 +1,26 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int q = Convert.ToInt32(Console.ReadLine());
+            for (int a0 = 0; a0 < q; a0++)
+            {
+                long x = Convert.ToInt64(Console.ReadLine());
+                string str = Convert.ToString(x, 2);
+                string str1 = "";
+                for (int i = 0; i < str.Length; i++)
+                {
+                    str1 += str[i] == '0' ? '1' : '0';
+                }
+                Console.WriteLine(Convert.ToInt64(str1, 2));
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/the-great-xor
