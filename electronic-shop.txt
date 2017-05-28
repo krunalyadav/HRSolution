@@ -1,0 +1,42 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int s = Convert.ToInt32(temp[0]);
+            int n = Convert.ToInt32(temp[1]);
+            int m = Convert.ToInt32(temp[2]);
+
+            temp = Console.ReadLine().Split(' ');
+            int[] keyboard = Array.ConvertAll(temp, int.Parse);
+            temp = Console.ReadLine().Split(' ');
+            int[] usb = Array.ConvertAll(temp, int.Parse);
+
+            Array.Sort(keyboard);
+            Array.Sort(usb);
+
+            int max = 0;
+
+            for (int i = 0; i < keyboard.Length; i++)
+            {
+                for (int j = 0; j < usb.Length; j++)
+                {
+                    if (keyboard[i] + usb[j] > s) break;
+                    max = Math.Max(max, keyboard[i] + usb[j]);
+                }
+            }
+
+            Console.WriteLine(max == 0 ? -1 : max);
+
+            Console.Read();
+        }
+
+
+    }
+}
+
+//https://www.hackerrank.com/challenges/electronics-shop
