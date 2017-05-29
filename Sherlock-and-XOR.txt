@@ -1,0 +1,32 @@
+using System;
+using System.Numerics;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            int n;
+            long odd = 0, even = 0;
+            string[] temp;
+            for (int i = 0; i < t; i++)
+            {
+                n = Convert.ToInt32(Console.ReadLine());
+                odd = 0;
+                even = 0;
+                temp = Console.ReadLine().Split(' ');
+                for (int j = 0; j < n; j++)
+                {
+                    if ((BigInteger.Parse(temp[j]) % 2) == 0) even++;
+                    else odd++;
+                }
+                Console.WriteLine(odd * even);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerearth.com/practice/basic-programming/bit-manipulation/basics-of-bit-manipulation/practice-problems/algorithm/sherlock-and-xor/
