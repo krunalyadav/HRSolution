@@ -1,0 +1,51 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int g = Convert.ToInt32(Console.ReadLine());
+            int n;
+            int[] ary;
+            int count = 0;
+            for (int i = 0; i < g; i++)
+            {
+                n = Convert.ToInt32(Console.ReadLine());
+                ary = new int[n + 1];
+                if (n == 1) Console.WriteLine("Bob");
+                else
+                {
+                    count = 0;
+                    for (int j = 2; j <= n; j++)
+                    {
+                        if (ary[j] == 0 && IsPrime(j))
+                        {
+                            for (int k = 2; (j * k) <= n; k++)
+                            {
+                                ary[j * k] = 1;
+                            }
+                            count++;
+                            ary[j] = 1;
+                        }
+                    }
+                    if (count % 2 == 0) Console.WriteLine("Bob");
+                    else Console.WriteLine("Alice");
+                }
+            }
+            Console.Read();
+        }
+
+        static bool IsPrime(int number)
+        {
+            if (number != 2 && number % 2 == 0) return false;
+            if (number != 3 && number % 3 == 0) return false;
+            if (number != 5 && number % 5 == 0) return false;
+            if (number != 7 && number % 7 == 0) return false;
+            return true;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/alice-and-bobs-silly-game
