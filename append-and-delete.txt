@@ -1,0 +1,32 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string t = Console.ReadLine();
+            int k = Convert.ToInt32(Console.ReadLine());
+            int i = 0;
+            while (i < Math.Min(s.Length, t.Length))
+            {
+                if (s[i] != t[i]) break;
+                i++;
+            }
+
+            int minOperation = t.Length - i + s.Length - i;
+            int moreOperation = minOperation;
+            while (moreOperation < k)
+            {
+                if (i-- > 0) moreOperation += 2;
+                else moreOperation++;
+            }
+            Console.WriteLine(moreOperation == k ? "Yes" : "No");
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/append-and-delete
