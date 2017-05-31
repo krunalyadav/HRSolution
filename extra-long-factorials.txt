@@ -1,0 +1,24 @@
+using System;
+using System.Numerics;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(Fact(t));
+            Console.Read();
+        }
+
+        static BigInteger Fact(BigInteger n)
+        {
+            if (n == 0 || n == 1) return n;
+            n = n * Fact(n - 1);
+            return n;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/extra-long-factorials?h_r=next-challenge&h_v=zen
