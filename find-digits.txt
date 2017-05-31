@@ -1,0 +1,33 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            long n;
+            int[] ary;
+            int count = 0;
+            for (int i = 0; i < t; i++)
+            {
+                n = Convert.ToInt64(Console.ReadLine());
+                ary = new int[10];
+                for (int j = 0; j < n.ToString().Length; j++)
+                {
+                    ary[(int)char.GetNumericValue(n.ToString()[j])]++;
+                }
+                count = 0;
+                for (int j = 1; j < 10; j++)
+                {
+                    if (ary[j] > 0 && n % j == 0) count += ary[j];
+                }
+                Console.WriteLine(count);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/find-digits?h_r=next-challenge&h_v=zen
