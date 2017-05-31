@@ -1,0 +1,30 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            int k;
+            int count = 0;
+            string[] temp;
+            for (int i = 0; i < t; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                k = Convert.ToInt32(temp[1]);
+                count = 0;
+                temp = Console.ReadLine().Split(' ');
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    if (Convert.ToInt32(temp[j]) <= 0) count++;
+                }
+                if (count >= k) Console.WriteLine("NO"); else Console.WriteLine("YES");
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/angry-professor
