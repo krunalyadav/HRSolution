@@ -1,0 +1,40 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int y = Convert.ToInt32(Console.ReadLine());
+            int[] ary = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            int days = 256;
+            int i;
+            if (y == 1918)
+            {
+                i = 0;
+                for (; (days >= 30 && i < ary.Length); i++)
+                {
+                    if (i != 1)
+                        days -= ary[i];
+                    else days -= 15;
+                }
+                Console.WriteLine(new DateTime(y, i + 1, days).ToString("dd.MM.yyyy"));
+            }
+            else
+            {
+                i = 0;
+                for (; (days >= 30 && i < ary.Length); i++)
+                {
+                    if (i == 1 && ((y <= 1917 && y % 4 == 0) || (y >= 1919 && (y % 400 == 0 || (y % 4 == 0 && y % 100 != 0)))))
+                        days -= ary[i] + 1;
+                    else days -= ary[i];
+                }
+                Console.WriteLine(new DateTime(y, i + 1, days).ToString("dd.MM.yyyy"));
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/day-of-the-programmer
