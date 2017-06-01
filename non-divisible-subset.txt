@@ -1,0 +1,39 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int k = Convert.ToInt32(temp[1]);
+            temp = Console.ReadLine().Split(' ');
+            long[] ary = new long[k];
+            for (int i = 0; i < temp.Length; i++)
+            {
+                ary[Convert.ToInt64(temp[i]) % k]++;
+            }
+            long result = 0;
+            long opposite = 0;
+            for (int i = 0; i * 2 <= k; i++)
+            {
+                opposite = (k - i) % k;
+                if (i == opposite)
+                {
+                    result += Math.Min(ary[i], 1);
+                }
+                else
+                {
+                    result += Math.Max(ary[i], ary[opposite]);
+                }
+            }
+
+            Console.WriteLine(result);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/non-divisible-subset
