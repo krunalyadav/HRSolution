@@ -1,0 +1,23 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            char[] str = new char[s.Length];
+            int top = -1;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (top < 0 || s[i] != str[top]) str[++top] = s[i];
+                else --top;
+            }
+            Console.WriteLine(top < 0 ? "Empty String" : new string(str, 0, top + 1));
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/reduced-string
