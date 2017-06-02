@@ -1,0 +1,33 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int x = Convert.ToInt32(Console.ReadLine());
+            int n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(TotalNumberOfWays(0, x, 1, n));
+            Console.Read();
+        }
+
+        static int TotalNumberOfWays(int currentSum, int targetNumber, int startPosition, int power)
+        {
+            int total = 0;
+            if (currentSum == targetNumber)
+            {
+                total = 1;
+                return total;
+            }
+
+            for (int i = startPosition; (currentSum + Math.Pow(i, power)) <= targetNumber; i++)
+            {
+                total += TotalNumberOfWays(currentSum + (int)Math.Pow(i, power), targetNumber, i + 1, power);
+            }
+            return total;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/the-power-sum
