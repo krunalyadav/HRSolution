@@ -1,0 +1,29 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int k = Convert.ToInt32(temp[1]);
+            Console.WriteLine(SuperDigitCount(temp[0], k));
+            Console.Read();
+        }
+
+        static long SuperDigitCount(string number, int k = 0)
+        {
+            long count = 0;
+            for (int i = 0; i < number.Length; i++)
+            {
+                count += Convert.ToInt32(number[i] - 48);
+            }
+            if (k != 0) count *= k;
+            if (count <= 9) return count;
+            else return SuperDigitCount(Convert.ToString(count));
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/the-power-sum
