@@ -1,0 +1,61 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int len = Convert.ToInt32(Console.ReadLine());
+            string s = Console.ReadLine();
+
+            int longestSolution = 0;
+            for (int i = 0; i < 26; i++)
+            {
+                for (int j = i + 1; j < 26; j++)
+                {
+                    char c1 = (char)('a' + i);
+                    char c2 = (char)('a' + j);
+
+                    int currentChar = -1;
+                    int countChar = 0;
+                    for (int z = 0; z < len; z++)
+                    {
+                        if (s[z] == c1)
+                        {
+                            if (currentChar == 1)
+                            {
+                                currentChar = -1;
+                                break;
+                            }
+                            currentChar = 1;
+                            countChar++;
+                        }
+                        else if (s[z] == c2)
+                        {
+                            if (currentChar == 2)
+                            {
+                                currentChar = -1;
+                                break;
+                            }
+                            currentChar = 2;
+                            countChar++;
+                        }
+                    }
+
+                    if (currentChar != -1 &&
+                        countChar > 1 &&
+                        countChar > longestSolution)
+                    {
+                        longestSolution = countChar;
+                    }
+                }
+            }
+            Console.WriteLine(longestSolution);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/two-characters
+//http://anothercasualcoder.blogspot.in/2016/10/two-characters-by-hackerrank.html
