@@ -1,0 +1,33 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string s = Console.ReadLine();
+            int k = Convert.ToInt32(Console.ReadLine());
+            k %= 26;
+            char[] str = s.ToCharArray();
+            for (int i = 0; i < n; i++)
+            {
+                if (str[i] >= 65 && str[i] <= 90)
+                {
+                    str[i] += (char)k;
+                    if (str[i] > 90) str[i] -= (char)26;
+                }
+                else if (str[i] >= 97 && str[i] <= 122)
+                {
+                    str[i] += (char)k;
+                    if (str[i] > 122) str[i] -= (char)26;
+                }
+            }
+            Console.WriteLine(new string(str));
+            Console.Read();
+        }
+    }
+}
+
+////http://anothercasualcoder.blogspot.in/2016/10/two-characters-by-hackerrank.html
