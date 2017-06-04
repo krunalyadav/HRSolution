@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int n = Convert.ToInt32(Console.ReadLine());
+            int x;
+            HashSet<int> weights = getWeights(s);
+            for (int i = 0; i < n; i++)
+            {
+                x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(weights.Contains(x) ? "Yes" : "No");
+            }
+            Console.Read();
+        }
+
+        static HashSet<int> getWeights(string s)
+        {
+            HashSet<int> weights = new HashSet<int>();
+            char prev = ' ';
+            int weight = 0;
+            char cur;
+            for (int i = 0; i < s.Length; i++)
+            {
+                cur = s[i];
+                if (prev != cur) weight = 0;
+                weight += cur - 'a' + 1;
+                weights.Add(weight);
+                prev = cur;
+            }
+            return weights;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/weighted-uniform-string
