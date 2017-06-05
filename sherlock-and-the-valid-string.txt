@@ -1,0 +1,32 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            Console.WriteLine(IsValid(s) ? "YES" : "NO");
+            Console.Read();
+        }
+
+        static bool IsValid(string s)
+        {
+            int[] ary = new int[26];
+            int i;
+            for (i = 0; i < s.Length; i++)
+            {
+                ary[s[i] - 97]++;
+            }
+            Array.Sort(ary);
+            for (i = 0; ary[i] == 0; i++) { }
+            if (ary[i] == ary[25]) return true;
+            else if (ary[i] == ary[24] && ary[25] - ary[i] == 1) return true;
+            return (ary[i] == 1 && ary[i + 1] == ary[25]);
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/sherlock-and-valid-string
+//https://github.com/havelessbemore/hackerrank/blob/master/algorithms/strings/sherlock-and-valid-string.java
