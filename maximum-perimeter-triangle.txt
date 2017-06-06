@@ -1,0 +1,27 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            long[] ary = Array.ConvertAll(temp, long.Parse);
+            Array.Sort(ary, (a, b) => b.CompareTo(a));
+            for (int i = 0; (i + 2) < n; i++)
+            {
+                if ((ary[i + 1] + ary[i + 2]) > ary[i])
+                {
+                    Console.WriteLine(ary[i + 2] + " " + ary[i + 1] + " " + ary[i]);
+                    return;
+                }
+            }
+            Console.WriteLine(-1);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/maximum-perimeter-triangle
