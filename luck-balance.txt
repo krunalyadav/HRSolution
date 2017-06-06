@@ -1,0 +1,40 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int k = Convert.ToInt32(temp[1]);
+            int maximum = 0;
+            int[] ary = new int[n];
+            int l = 0;
+            for (int i = 0; i < n; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                if (Convert.ToInt32(temp[1]) == 0)
+                    maximum += Convert.ToInt32(temp[0]);
+                else
+                    ary[l++] = Convert.ToInt32(temp[0]);
+            }
+            Array.Sort(ary, (a, b) => b.CompareTo(a));
+            l = 0;
+            while (k-- > 0)
+            {
+                maximum += ary[l++];
+            }
+            while (l < ary.Length)
+            {
+                maximum -= ary[l++];
+            }
+            Console.WriteLine(maximum);
+
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/luck-balance
