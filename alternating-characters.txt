@@ -1,0 +1,28 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            string s;
+            int count = 0;
+            for (int i = 0; i < t; i++)
+            {
+                count = 0;
+                s = Console.ReadLine();
+                for (int j = 0; (j + 1) < s.Length; j++)
+                {
+                    if (s[j] == s[j + 1]) count++;
+                }
+                Console.WriteLine(count);
+            }
+
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/alternating-characters
