@@ -1,0 +1,39 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            long b, w, x, y, z;
+            string[] temp;
+            for (int i = 0; i < t; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                b = Convert.ToInt64(temp[0]);
+                w = Convert.ToInt64(temp[1]);
+                temp = Console.ReadLine().Split(' ');
+                x = Convert.ToInt64(temp[0]);
+                y = Convert.ToInt64(temp[1]);
+                z = Convert.ToInt64(temp[2]);
+                if (x < y && y > (x + z))
+                {
+                    Console.WriteLine((x + z) * w + b * x);
+                }
+                else if (y < x && x > (y + z))
+                {
+                    Console.WriteLine((y + z) * b + y * w);
+                }
+                else
+                {
+                    Console.WriteLine(x * b + y * w);
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/taum-and-bday
