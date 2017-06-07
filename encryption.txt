@@ -1,0 +1,35 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            int a = (int)Math.Ceiling(Math.Sqrt(s.Length));
+            int b = (int)Math.Ceiling((double)s.Length / a);
+            char[,] ary = new char[b, a];
+            int k = 0;
+            for (int i = 0; k < s.Length && i < b; i++)
+            {
+                for (int j = 0; k < s.Length && j < a; j++)
+                {
+                    ary[i, j] = s[k++];
+                }
+            }
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+                    if (ary[j, i] != '\0')
+                        Console.Write(ary[j, i]);
+                }
+                Console.Write(" ");
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/encryption?h_r=next-challenge&h_v=zen
