@@ -1,0 +1,42 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] a = Array.ConvertAll(temp, int.Parse);
+            string[] temp1 = Console.ReadLine().Split(' ');
+            int[] b = Array.ConvertAll(temp1, int.Parse);
+            Array.Sort(a);
+            Array.Sort(b);
+            int x = a[0];
+            int y = b[0];
+            int index = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (x == Convert.ToInt32(temp[i]))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            if (y == Convert.ToInt32(temp1[index]))
+            {
+                int m = x + b[1];
+                int k = y + a[1];
+                Console.WriteLine(m < k ? m : k);
+            }
+            else
+            {
+                Console.WriteLine(x + y);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/contests/w33/challenges/twin-arrays
