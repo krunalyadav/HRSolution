@@ -21,10 +21,11 @@ namespace ConsoleApp2
                     {
                         a = j;
                     }
-                    else if (s[j] == '1' && a != -1 && s[j - 1] == '0')
+                    else if (s[j] == '1' && a != -1)
                     {
                         a = j;
-                        count++;
+                        if (s[j - 1] == '0')
+                            count++;
                     }
                     else
                     {
