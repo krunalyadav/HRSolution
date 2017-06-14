@@ -1,0 +1,33 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] a = Array.ConvertAll(temp, int.Parse);
+            temp = Console.ReadLine().Split(' ');
+            int[] b = new int[1001];
+            for (int i = 0; i < temp.Length; i++)
+            {
+                b[Convert.ToInt32(temp[i])]++;
+            }
+            int count = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (b[a[i]] > 0)
+                {
+                    b[a[i]]--;
+                    count++;
+                }
+            }
+            Console.WriteLine(count == n ? count - 1 : count + 1);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/beautiful-pairs
