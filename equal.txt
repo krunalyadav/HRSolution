@@ -39,3 +39,62 @@ namespace ConsoleApp1
 }
 
 //https://www.hackerrank.com/challenges/equal
+
+
+
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            int[] rem;
+            string[] temp;
+            int n;
+            int count = 0;
+            int min;
+            int[] ary;
+            for (int i = 0; i < t; i++)
+            {
+                n = Convert.ToInt32(Console.ReadLine());
+                temp = Console.ReadLine().Split(' ');
+                ary = Array.ConvertAll(temp, int.Parse);
+                Array.Sort(ary);
+                count = 0;
+                rem = new int[1000];
+                min = ary[0];
+                for (int k = 1; k < n; k++)
+                {
+                    if (ary[k] != min)
+                    {
+                        count += getNoOfWays(min, ary[k], rem);
+                    }
+                }
+                Console.WriteLine(count);
+            }
+            Console.Read();
+        }
+
+        static int getNoOfWays(int min, int n, int[] rem)
+        {
+            if (rem[n] != 0) return rem[n];
+            int way = 0;
+            if ((n - 5) == min || (n - 2) == min || (n - 1) == min)
+            {
+                rem[n] = 1;
+                return 1;
+            }
+            else if ((n - 5) > min) way += getNoOfWays(min, n - 5, rem);
+            else if ((n - 2) > min) way += getNoOfWays(min, n - 2, rem);
+            else if ((n - 1) > min) way += getNoOfWays(min, n - 1, rem);
+            way++;
+            rem[n] = way;
+            return rem[n];
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/equal
