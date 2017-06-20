@@ -18,3 +18,5 @@
             Console.Read();
         }
     }
+
+//https://www.hackerrank.com/challenges/camelcase
