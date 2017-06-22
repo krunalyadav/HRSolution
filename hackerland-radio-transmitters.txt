@@ -1,0 +1,38 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int k = Convert.ToInt32(temp[1]);
+            temp = Console.ReadLine().Split(' ');
+            int[] array = Array.ConvertAll(temp, int.Parse);
+            Array.Sort(array);
+            int l = -1, r = -1, ans = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] <= r) continue;
+                if (l == -1)
+                {
+                    l = array[i];
+                }
+                else if (array[i] - l > k)
+                {
+                    ans++;
+                    if (array[i] - array[i - 1] <= k) l = -1;
+                    else l = array[i];
+                    r = array[i - 1] + k;
+                }
+            }
+            Console.WriteLine(ans + (l != -1 ? 1 : 0));
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/hackerland-radio-transmitters
+//https://github.com/haotian-wu/Hackerrank_solutions/blob/master/Search/hackerland-radio-transmitters.cpp
