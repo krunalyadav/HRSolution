@@ -1,0 +1,41 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int size = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] array = Array.ConvertAll(temp, int.Parse);
+            int tmp;
+            for (int i = 1; i < array.Length; i++)
+            {
+                for (int j = i; j - 1 >= 0; j--)
+                {
+                    if (array[j] < array[j - 1])
+                    {
+                        tmp = array[j - 1];
+                        array[j - 1] = array[j];
+                        array[j] = tmp;
+                    }
+                }
+                PrintArray(array);
+            }
+
+            Console.Read();
+        }
+
+        static void PrintArray(int[] ary)
+        {
+            for (int i = 0; i < ary.Length; i++)
+            {
+                Console.Write(ary[i] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/insertionsort2?h_r=next-challenge&h_v=zen
