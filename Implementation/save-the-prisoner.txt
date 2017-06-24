@@ -33,3 +33,5 @@ namespace ConsoleApp2
         }
     }
 }
+
+//https://www.hackerrank.com/challenges/save-the-prisoner
