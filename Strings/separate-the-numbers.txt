@@ -1,0 +1,59 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int q = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < q; i++)
+            {
+                string s = Console.ReadLine();
+                bool flag = false;
+                long count = 0;
+                int len = 1;
+                while (len <= (s.Length / 2))
+                {
+                    string temp = string.Empty;
+                    for (int k = 0; k < len; k++)
+                    {
+                        temp += s[k];
+                    }
+                    if (IsSequence(temp, len, s))
+                    {
+                        flag = true;
+                        count = Convert.ToInt64(temp);
+                        break;
+                    }
+                    len++;
+                }
+                Console.WriteLine(flag ? "YES " + count : "NO");
+            }
+            Console.Read();
+        }
+
+
+        static bool IsSequence(string s, int index, string str)
+        {
+            while (index < str.Length)
+            {
+                long number = Convert.ToInt64(s);
+                number++;
+                string temp = number.ToString();
+                int s_index = index;
+                for (int i = 0; s_index < str.Length && i < temp.Length; i++)
+                {
+                    if (str[s_index++] != temp[i]) return false;
+                }
+                s = temp;
+                index += s.Length;
+            }
+            if (index == str.Length) return true;
+            return false;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/separate-the-numbers
+//http://elgoacademy.org/separate-numbers-university-codesprint-2-hackerrank/
