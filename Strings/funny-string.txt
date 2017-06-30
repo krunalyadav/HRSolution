@@ -1,0 +1,32 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int k = 0; k < t; k++)
+            {
+                string s = Console.ReadLine();
+                bool flag = false;
+                for (int i = 1; !flag && i < s.Length; i++)
+                {
+                    if (Math.Abs(s[i] - s[i - 1]) != Math.Abs(s[s.Length - i] - s[s.Length - i - 1]))
+                    {
+                        Console.WriteLine("Not Funny");
+                        flag = true;
+                    }
+                }
+                if (!flag)
+                {
+                    Console.WriteLine("Funny");
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/funny-string
