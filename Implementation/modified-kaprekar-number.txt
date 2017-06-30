@@ -1,0 +1,44 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int p = Convert.ToInt32(Console.ReadLine());
+            int q = Convert.ToInt32(Console.ReadLine());
+
+            string str = string.Empty;
+
+            for (int i = p; i <= q; i++)
+            {
+                if (IsKaprekar(i))
+                {
+                    str += i + " ";
+                }
+            }
+            if (string.IsNullOrEmpty(str))
+            {
+                Console.WriteLine("INVALID RANGE");
+            }
+            else
+            {
+                Console.WriteLine(str);
+            }
+            Console.Read();
+        }
+
+        static bool IsKaprekar(long n)
+        {
+            long square = n * n;
+            string str = square.ToString();
+            int n1 = Convert.ToInt32(str.Substring(str.Length - n.ToString().Length));
+            str = str.Substring(0, str.Length - n.ToString().Length);
+            int n2 = Convert.ToInt32(string.IsNullOrEmpty(str) ? "0" : str);
+            return n1 + n2 == n;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/kaprekar-numbers
