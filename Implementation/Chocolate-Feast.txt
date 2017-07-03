@@ -1,0 +1,49 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < t; i++)
+            {
+                string[] temp = Console.ReadLine().Split(' ');
+                int n = Convert.ToInt32(temp[0]);
+                int c = Convert.ToInt32(temp[1]);
+                int m = Convert.ToInt32(temp[2]);
+                Console.WriteLine(n / c + GetChocolates(n / c, m));
+            }
+
+            //int t = Convert.ToInt32(Console.ReadLine());
+            //for (int i = 0; i < t; i++)
+            //{
+            //    string[] temp = Console.ReadLine().Split(' ');
+            //    int n = Convert.ToInt32(temp[0]);
+            //    int c = Convert.ToInt32(temp[1]);
+            //    int m = Convert.ToInt32(temp[2]);
+            //    int ans = 0;
+            //    int tmp = ans = n / c;
+            //    while (tmp >= m)
+            //    {
+            //        ans++;
+            //        tmp -= m;
+            //        tmp++;
+            //    }
+            //    Console.WriteLine(ans);
+            //}
+
+            Console.Read();
+        }
+
+        static int GetChocolates(int c, int m)
+        {
+            if (c < m) return 0;
+            else if (c == m) return 1;
+            else return c / m + GetChocolates(c / m + c % m, m);
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/chocolate-feast
