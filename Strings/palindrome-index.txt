@@ -1,0 +1,61 @@
+using System;
+using System.Text;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                string s = Console.ReadLine();
+                bool flag = false;
+                for (int k = 0; k < s.Length / 2; k++)
+                {
+                    if (s[k] != s[s.Length - 1 - k])
+                    {
+                        if (k == (s.Length / 2 - 1))
+                        {
+                            Console.WriteLine(k);
+                        }
+                        else
+                        {
+                            StringBuilder str = new StringBuilder(s);
+                            str.Remove(k, 1);
+                            if (IsPalindrome(str.ToString()))
+                            {
+                                Console.WriteLine(k);
+                            }
+                            else
+                            {
+                                Console.WriteLine(s.Length - 1 - k);
+                            }
+                        }
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag)
+                {
+                    Console.WriteLine(-1);
+                }
+            }
+
+            Console.Read();
+        }
+
+        static bool IsPalindrome(string s)
+        {
+            for (int i = 0; i < s.Length / 2; i++)
+            {
+                if (s[i] != s[s.Length - 1 - i]) return false;
+            }
+            return true;
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/palindrome-index
