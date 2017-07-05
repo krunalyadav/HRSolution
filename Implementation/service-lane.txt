@@ -1,0 +1,29 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int t = Convert.ToInt32(temp[1]);
+            temp = Console.ReadLine().Split(' ');
+            int[] array = Array.ConvertAll(temp, int.Parse);
+            for (int i = 0; i < t; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                int min = int.MaxValue;
+                for (int k = Convert.ToInt32(temp[0]); k <= Convert.ToInt32(temp[1]); k++)
+                {
+                    if (array[k] < min) min = array[k];
+                }
+                Console.WriteLine(min);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/service-lane
