@@ -1,0 +1,45 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = new int[26];
+            string a = Console.ReadLine();
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (array[a[i] - 97] > 0)
+                {
+                    --array[a[i] - 97];
+                }
+                else
+                {
+                    ++array[a[i] - 97];
+                }
+            }
+            bool flag = false, flag1 = false;
+            for (int i = 0; !flag1 && i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    if (flag)
+                    {
+                        Console.WriteLine("NO");
+                        flag1 = true;
+                        break;
+                    }
+                    else flag = true;
+                }
+            }
+            if (!flag1)
+            {
+                Console.WriteLine("YES");
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/game-of-thrones?h_r=next-challenge&h_v=zen
