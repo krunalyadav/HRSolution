@@ -1,0 +1,35 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int k = 0; k < t; k++)
+            {
+                int n = Convert.ToInt32(Console.ReadLine());
+                int a = Convert.ToInt32(Console.ReadLine());
+                int b = Convert.ToInt32(Console.ReadLine());
+                if (a != b)
+                {
+                    int s = a < b ? a : b;
+                    int l = a < b ? b : a;
+                    for (int i = 0; i < n; i++)
+                    {
+                        Console.Write(s * (n - 1 - i) + l * i + " ");
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine((n - 1) * a);
+                }                
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/manasa-and-stones
