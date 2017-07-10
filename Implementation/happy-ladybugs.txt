@@ -1,0 +1,75 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int g = Convert.ToInt32(Console.ReadLine());
+            for (int k = 0; k < g; k++)
+            {
+                int n = Convert.ToInt32(Console.ReadLine());
+                string s = Console.ReadLine();
+                int[] ary = new int[26];
+                int underscore = 0;
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (s[i] >= 'A' && s[i] <= 'Z') ary[s[i] - 65]++; else underscore++;
+                }
+                bool flag = false;
+                if (underscore > 0)
+                {
+                    for (int i = 0; !flag && i < ary.Length; i++)
+                    {
+                        if (ary[i] == 1)
+                        {
+                            Console.WriteLine("NO");
+                            flag = true;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        Console.WriteLine("YES");
+                    }
+                }
+                else
+                {
+                    for (int i = 0; !flag && i < s.Length;)
+                    {
+                        if (ary[s[i] - 65] == 1)
+                        {
+                            flag = true;
+                            Console.WriteLine("NO");
+                            break;
+                        }
+                        else
+                        {
+                            int temp = ary[s[i] - 65];
+                            int m = 1;
+                            while (m < temp)
+                            {
+                                if (s[i] != s[i + m])
+                                {
+                                    flag = true;
+                                    Console.WriteLine("NO");
+                                    break;
+                                }
+                                m++;
+                            }
+                            i += m;
+                            continue;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        Console.WriteLine("YES");
+                    }
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/happy-ladybugs
