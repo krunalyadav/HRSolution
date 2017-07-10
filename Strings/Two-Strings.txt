@@ -1,0 +1,38 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int p = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < p; i++)
+            {
+                string a = Console.ReadLine();
+                string b = Console.ReadLine();
+                int[] array = new int[26];
+                for (int k = 0; k < a.Length; k++)
+                {
+                    array[a[k] - 97]++;
+                }
+                bool flag = false;
+                for (int k = 0; !flag && k < b.Length; k++)
+                {
+                    if (array[b[k] - 97] > 0)
+                    {
+                        flag = true;
+                        Console.WriteLine("YES");
+                    }
+                }
+                if (!flag)
+                {
+                    Console.WriteLine("NO");
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/two-strings
