@@ -1,0 +1,31 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] ary = new int[100];
+            string[] temp = Console.ReadLine().Split(' ');
+            for (int i = 0; i < n; i++)
+            {
+                ary[Convert.ToInt32(temp[i])]++;
+            }
+            for (int i = 0; i < ary.Length; i++)
+            {
+                if (ary[i] > 0)
+                {
+                    for (int j = 0; j < ary[i]; j++)
+                    {
+                        Console.Write(i + " ");
+                    }
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/countingsort2
