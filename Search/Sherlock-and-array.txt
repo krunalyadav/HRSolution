@@ -1,0 +1,37 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int k = 0; k < t; k++)
+            {
+                int n = Convert.ToInt32(Console.ReadLine());
+                string[] temp = Console.ReadLine().Split(' ');
+                int[] array = Array.ConvertAll(temp, int.Parse);
+                int i = 0;
+                int j = n - 1;
+                long left = 0;
+                long right = 0;
+                while (i != j)
+                {
+                    if (left < right)
+                    {
+                        left += array[i++];
+                    }
+                    else
+                    {
+                        right += array[j--];
+                    }
+                }
+                Console.WriteLine(left == right ? "YES" : "NO");
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/sherlock-and-array
