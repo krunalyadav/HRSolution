@@ -1,0 +1,40 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] a = Array.ConvertAll(temp, int.Parse);
+            int m = Convert.ToInt32(Console.ReadLine());
+            temp = Console.ReadLine().Split(' ');
+            int[] b = Array.ConvertAll(temp, int.Parse);
+            int[] array = new int[10001];
+            int min = int.MaxValue;
+            int max = int.MinValue;
+            for (int i = 0; i < m; i++)
+            {
+                array[b[i]]++;
+                if (b[i] < min) min = b[i];
+                if (b[i] > max) max = b[i];
+            }
+            for (int i = 0; i < n; i++)
+            {
+                array[a[i]]--;
+            }
+            for (int i = min; i <= max; i++)
+            {
+                if (array[i] > 0)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/missing-numbers
