@@ -1,0 +1,28 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            long k = Convert.ToInt64(temp[1]);
+            temp = Console.ReadLine().Split(' ');
+            long[] price = Array.ConvertAll(temp, long.Parse);
+            Array.Sort(price);
+            long count = 0, sum = 0;
+            long i = 0;
+            while (sum <= k)
+            {
+                sum += price[i++];
+                count++;
+            }
+            Console.WriteLine(count - 1);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/mark-and-toys?h_r=next-challenge&h_v=zen
