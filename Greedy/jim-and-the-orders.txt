@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                string[] temp = Console.ReadLine().Split(' ');
+                dict[++count] = Convert.ToInt32(temp[0]) + Convert.ToInt32(temp[1]);
+            }
+            var result = dict.ToList().OrderBy(x => x.Value);
+            result.ToList().ForEach(x =>
+            {
+                Console.Write(x.Key + " ");
+            });
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/jim-and-the-orders
