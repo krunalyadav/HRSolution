@@ -1,0 +1,35 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string s = Console.ReadLine();
+            string first = s.Substring(0, 3);
+            string second = s.Substring(3);
+            int sum = (int)Char.GetNumericValue(first[0]) + (int)Char.GetNumericValue(first[1]) + (int)Char.GetNumericValue(first[2]);
+            int temp = Convert.ToInt32(second);
+            while (true)
+            {
+                temp++;
+                second = temp.ToString().PadLeft(3, '0');
+                if (second.Length > 3)
+                {
+                    temp = Convert.ToInt32(first);
+                    temp++;
+                    first = temp.ToString();
+                    sum = (int)Char.GetNumericValue(first[0]) + (int)Char.GetNumericValue(first[1]) + (int)Char.GetNumericValue(first[2]);
+                    second = "000";
+                    temp = Convert.ToInt32(second);
+                }
+                if (((int)Char.GetNumericValue(second[0]) + (int)Char.GetNumericValue(second[1]) + (int)Char.GetNumericValue(second[2])) == sum) break;
+            }
+            Console.WriteLine(string.Concat(first, temp.ToString().PadLeft(3, '0')));
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/contests/w34/challenges/once-in-a-tram/problem
