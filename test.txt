@@ -1,0 +1,79 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int gcd = 0, sum = 0;
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] first = Array.ConvertAll(temp, int.Parse);
+            temp = Console.ReadLine().Split(' ');
+            int[] second = Array.ConvertAll(temp, int.Parse);
+            int[] a = new int[1000001];
+            int[] b = new int[1000001];
+
+            for (int i = 0; i < n; i++)
+            {
+                if (a[first[i]] == 0)
+                {
+                    a[first[i]]++;
+                }
+                if (b[second[i]] == 0)
+                {
+                    b[second[i]]++;
+                }
+            }
+
+            for (int i = 1000000; i >= 0; --i)
+            {
+                if (a[i] > 0)
+                {
+                    for (int j = 1000000; j >= 0; --j)
+                    {
+                        if (b[j] > 0 && i > gcd && j > gcd)
+                        {
+                            int tmp = GCD(i, j);
+                            if (tmp > gcd)
+                            {
+                                gcd = tmp;
+                                sum = i + j;
+                            }
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(sum);
+            Console.Read();
+        }
+
+        static int GCD(int a, int b)
+        {
+            if (a == b) return a;
+            if (a == 0 || b == 0) return a + b;
+            if ((~a & 1) != 0)
+            {
+                if ((b & 1) != 0)
+                {
+                    return GCD(a >> 1, b);
+                }
+                else
+                {
+                    return GCD(a >> 1, b >> 1) << 1;
+                }
+            }
+            if ((~b & 1) != 0)
+            {
+                return GCD(a, b >> 1);
+            }
+            if (a > b)
+                return GCD((a - b) >> 1, b);
+
+            return GCD((b - a) >> 1, a);
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/two-arrays
