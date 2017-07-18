@@ -1,0 +1,41 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int q = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < q; i++)
+            {
+                string[] temp = Console.ReadLine().Split(' ');
+                int n = Convert.ToInt32(temp[0]);
+                long k = Convert.ToInt32(temp[1]);
+                temp = Console.ReadLine().Split(' ');
+                long[] a = Array.ConvertAll(temp, long.Parse);
+                temp = Console.ReadLine().Split(' ');
+                long[] b = Array.ConvertAll(temp, long.Parse);
+                Array.Sort(a);
+                Array.Sort(b, (x, y) => y.CompareTo(x));
+                bool flag = false;
+                for (int p = 0; p < n; p++)
+                {
+                    if (a[p] + b[p] < k)
+                    {
+                        flag = true;
+                        Console.WriteLine("NO");
+                        break;
+                    }
+                }
+                if (!flag)
+                {
+                    Console.WriteLine("YES");
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/two-arrays
