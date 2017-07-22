@@ -1,0 +1,33 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int x = Convert.ToInt32(temp[1]);
+            int m = Convert.ToInt32(temp[2]);
+            int[] a = new int[n];
+            int[] b = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                temp = Console.ReadLine().Split(' ');
+                a[i] = Convert.ToInt32(temp[0]);
+                b[i] = Convert.ToInt32(temp[1]);
+            }
+
+            float count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                count += ((x - a[i]) * ((float)b[i] / 100));
+            }
+            Console.WriteLine(count * m);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/contests/moodysanalyticswomeninengineering/challenges/expected-casino-profit/problem
