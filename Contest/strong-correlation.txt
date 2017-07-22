@@ -1,0 +1,35 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] p = Array.ConvertAll(temp, int.Parse);
+            temp = Console.ReadLine().Split(' ');
+            int[] d = Array.ConvertAll(temp, int.Parse);
+            bool flag = false;
+            for (int i = 1; i < n; i++)
+            {
+                if ((d[i] > d[i - 1] && p[i] > p[i - 1]) || (d[i] < d[i - 1] && p[i] < p[i - 1]) || (d[i] == d[i - 1] && p[i] == p[i - 1]))
+                    continue;
+                else
+                {
+                    flag = true;
+                    Console.WriteLine("No");
+                    break;
+                }
+            }
+            if (!flag)
+            {
+                Console.WriteLine("Yes");
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/contests/moodysanalyticswomeninengineering/challenges/strong-correlation/problem
