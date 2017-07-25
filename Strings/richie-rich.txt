@@ -1,0 +1,100 @@
+using System;
+using System.Text;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int k = Convert.ToInt32(temp[1]);
+
+            string str = Console.ReadLine();
+
+            bool flag = false;
+            StringBuilder sb = new StringBuilder(str);
+            bool[] setBit = new bool[n];
+            if (n != 1)
+            {
+                for (int i = 0; i < n / 2; i++)
+                {
+                    if (sb[i] != sb[n - i - 1])
+                    {
+                        if (k > 0)
+                        {
+                            if (sb[i] > sb[n - i - 1])
+                            {
+                                sb[n - i - 1] = sb[i];
+                            }
+                            else
+                            {
+                                sb[i] = sb[n - i - 1];
+                            }
+                            setBit[i] = true;
+                            k--;
+                        }
+                        else
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                if (flag)
+                {
+                    Console.WriteLine(-1);
+                }
+                else
+                {
+                    for (int i = 0; i < n / 2; i++)
+                    {
+                        if (k == 0)
+                        {
+                            break;
+                        }
+                        else if (sb[i] != '9')
+                        {
+                            if (setBit[i])
+                            {
+                                sb[i] = '9';
+                                sb[n - i - 1] = '9';
+                                k--;
+                            }
+                            else
+                            {
+                                if (k >= 2)
+                                {
+                                    sb[i] = '9';
+                                    sb[n - i - 1] = '9';
+                                    k -= 2;
+                                }
+                            }
+                        }
+                    }
+
+                    if (n % 2 != 0 && k > 0)
+                    {
+                        sb[n / 2] = '9';
+                    }
+                    Console.WriteLine(sb.ToString());
+                }
+            }
+            else
+            {
+                if (k > 0)
+                {
+                    Console.WriteLine(9);
+                }
+                else
+                {
+                    Console.WriteLine(str);
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/richie-rich
