@@ -1,0 +1,44 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(temp[0]);
+            int k = Convert.ToInt32(temp[1]);
+            int[] ary = new int[k];
+            long minCost = 0;
+            temp = Console.ReadLine().Split(' ');
+            long[] price = Array.ConvertAll(temp, long.Parse);
+
+            Array.Sort(price, (a, b) => b.CompareTo(a));
+            bool flag = false;
+            int i = 0, j = 0;
+
+            while (j < n)
+            {
+                minCost += (ary[i] + 1) * price[j++];
+                ary[i]++;
+                if (!flag) i++;
+                else i--;
+                if (i == k)
+                {
+                    flag = true;
+                    i--;
+                }
+                else if (i == -1)
+                {
+                    flag = false;
+                    i++;
+                }
+            }
+            Console.WriteLine(minCost);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/greedy-florist
