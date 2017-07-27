@@ -1,0 +1,31 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int k = Convert.ToInt32(Console.ReadLine());
+            long[] ary = new long[n];
+            for (int i = 0; i < n; i++)
+            {
+                ary[i] = Convert.ToInt64(Console.ReadLine());
+            }
+
+            Array.Sort(ary);
+            long mindiff = long.MaxValue;
+            for (int i = 0; i <= n - k; i++)
+            {
+                long temp = ary[i + k - 1] - ary[i];
+                if (temp < mindiff)
+                    mindiff = temp;
+            }
+            Console.WriteLine(mindiff);
+            Console.Read();
+        }
+    }
+}
+
+//https://www.hackerrank.com/challenges/angry-children?h_r=next-challenge&h_v=zen
