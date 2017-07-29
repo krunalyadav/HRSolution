@@ -1,0 +1,34 @@
+using System;
+
+namespace ConsoleApp2
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < t; i++)
+            {
+                int n = Convert.ToInt32(Console.ReadLine());
+                string[] temp = Console.ReadLine().Split(' ');
+                int[] ary = Array.ConvertAll(temp, int.Parse);
+                int max_sum = 0, current_max = -100000, max_contiguous = -100000;
+                for (int k = 0; k < n; k++)
+                {
+                    current_max = Math.Max(ary[k], current_max + ary[k]);
+                    max_contiguous = Math.Max(max_contiguous, current_max);
+                    if (ary[k] > 0) max_sum += ary[k];
+                }
+                if (max_contiguous < 0)
+                {
+                    max_sum = max_contiguous;
+                }
+                Console.WriteLine(max_contiguous + " " + max_sum);
+            }
+            Console.Read();
+        }
+    }
+}
+
+//http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+//https://www.hackerrank.com/challenges/maxsubarray
