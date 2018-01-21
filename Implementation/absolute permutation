@@ -1,0 +1,48 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = Convert.ToInt32(Console.ReadLine());
+            for (int a0 = 0; a0 < t; a0++)
+            {
+                string[] tokens_n = Console.ReadLine().Split(' ');
+                int n = Convert.ToInt32(tokens_n[0]);
+                int k = Convert.ToInt32(tokens_n[1]);
+                if (k == 0)
+                {
+                    for (int i = 1; i <= n; i++)
+                    {
+                        Console.Write(i + " ");
+                    }
+                    Console.WriteLine();
+                }
+                else if ((k <= n / 2) && (n % k == 0) && ((n / k) % 2 == 0))
+                {
+                    int[] pos = new int[n];
+                    for (int i = 0; i < n; i++)
+                    {
+                        if ((i / k) % 2 == 0) pos[i] = i + k + 1;
+                        else pos[i] = i - k + 1;
+                    }
+                    for (int i = 0; i < n; i++)
+                    {
+                        Console.Write(pos[i] + " ");
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine(-1);
+                }
+            }
+            Console.Read();
+        }
+    }
+}
+
+
+//http://gotitt.blogspot.in/2016/09/absolute-permutation.html
