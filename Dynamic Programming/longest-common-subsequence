@@ -1,0 +1,77 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string a = Console.ReadLine();
+            string b = Console.ReadLine();
+            FindAndPrintLCS(a, b);
+            Console.Read();
+        }
+
+        static void FindAndPrintLCS(string a, string b)
+        {
+            int[,] lcs = new int[a.Length + 1, b.Length + 1];
+            string answer = string.Empty;
+            string[,] solution = new string[a.Length + 1, b.Length + 1];
+            for (int i = 0; i <= b.Length; i++)
+            {
+                lcs[0, i] = 0;
+                solution[0, i] = "0";
+            }
+
+            for (int i = 0; i <= a.Length; i++)
+            {
+                lcs[i, 0] = 0;
+                solution[i, 0] = "0";
+            }
+
+            for (int i = 1; i <= a.Length; i++)
+            {
+                for (int j = 1; j <= b.Length; j++)
+                {
+                    if (a[i - 1] == b[j - 1])
+                    {
+                        lcs[i, j] = lcs[i - 1, j - 1] + 1;
+                        solution[i, j] = "D";
+                    }
+                    else
+                    {
+                        lcs[i, j] = Math.Max(lcs[i - 1, j], lcs[i, j - 1]);
+                        solution[i, j] = lcs[i, j] == lcs[i - 1, j] ? "T" : "L";
+                    }
+                }
+            }
+
+            string x = solution[a.Length, b.Length];
+            var m = a.Length;
+            var n = b.Length;
+            while (x != "0")
+            {
+                switch (x)
+                {
+                    case "D":
+                        answer = a[m - 1] + answer;
+                        m--;
+                        n--;
+                        break;
+                    case "L":
+                        n--;
+                        break;
+                    case "T":
+                        m--;
+                        break;
+                }
+                x = solution[m, n];
+            }
+            Console.WriteLine(answer);
+            Console.WriteLine(lcs[a.Length, b.Length]);
+        }
+    }
+}
+
+
+//http://algorithms.tutorialhorizon.com/dynamic-programming-longest-common-subsequence/
