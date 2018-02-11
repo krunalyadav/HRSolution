@@ -1,0 +1,62 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] temp = Console.ReadLine().Split(' ');
+            int[] array = Array.ConvertAll(temp, int.Parse);
+            FindLIS(array);
+            Console.Read();
+        }
+
+        static void FindLIS(int[] array)
+        {
+            int[] LIS = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                int max = -1;
+                for (int j = 0; j < i; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        if (max == -1 || max < LIS[j] + 1)
+                            max = 1 + LIS[j];
+                    }
+                }
+                if (max == -1)
+                {
+                    max = 1;
+                }
+                LIS[i] = max;
+            }
+            int result = -1;
+            int index = -1;
+            for (int i = 0; i < LIS.Length; i++)
+            {
+                if (result < LIS[i])
+                {
+                    result = LIS[i];
+                    index = i;
+                }
+            }
+            string path = string.Empty;
+            for (int i = index; i >= 0; i--)
+            {
+                if (LIS[i] == result)
+                {
+                    path = array[i] + " " + path;
+                    result--;
+                }
+            }
+
+            Console.WriteLine(path);
+        }
+    }
+}
+
+
+//https://algorithms.tutorialhorizon.com/dynamic-programming-longest-increasing-subsequence/
